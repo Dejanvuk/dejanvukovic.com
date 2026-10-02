@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading &amp; watching · Dejan Vuković</title>
+  <meta name="description" content="Books and videos I recommend, grouped by topic.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐺</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #E8ECEF;
+      --surface: #F5F7F9;
+      --ink: #1B2631;
+      --muted: #56636F;
+      --link: #2B5A86;
+      --rule: #C5CDD4;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141A20;
+        --surface: #1C242C;
+        --ink: #E2E7EC;
+        --muted: #8E9BA7;
+        --link: #8DB4DA;
+        --rule: #2C3640;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      padding: clamp(2.5rem, 8vw, 5rem) 1.25rem 3rem;
+    }
+    .wrap { max-width: 40rem; margin: 0 auto; }
+
+    .back { font-size: 0.9rem; color: var(--muted); text-decoration: none; }
+    .back:hover { color: var(--ink); }
+    h1 {
+      margin-top: 1.5rem;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 800; font-stretch: 125%;
+      line-height: 1.05; letter-spacing: -0.02em;
+    }
+    .intro { margin-top: 1rem; color: var(--muted); }
+    .intro p + p { margin-top: 0.75rem; }
+
+    /* Category jump links */
+    .toc {
+      list-style: none; padding: 0;
+      margin-top: 1.5rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .toc a {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink); text-decoration: none; font-size: 0.85rem;
+      transition: background .15s, color .15s;
+    }
+    .toc a:hover { background: var(--ink); color: var(--bg); }
+
+    hr { border: 0; border-top: 2px solid var(--rule); margin: 2.5rem 0 2rem; }
+
+    section { scroll-margin-top: 1.5rem; }
+    section + section { margin-top: 2.75rem; }
+    h2 {
+      font-size: 0.85rem; font-weight: 700; font-stretch: 112%;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted);
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule);
+    }
+
+    .items { list-style: none; padding: 0; }
+    .items li { padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+    h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
+    h3 a { color: var(--ink); text-decoration-color: var(--rule); }
+    h3 a:hover { color: var(--link); text-decoration-color: currentColor; }
+    .meta { margin-top: 0.15rem; font-size: 0.85rem; color: var(--muted); }
+    .kind { font-weight: 600; }
+    .items li > p:last-child { margin-top: 0.45rem; }
+
+    a { color: var(--link); text-underline-offset: 0.2em; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; border-radius: 4px; }
+
+    footer { margin-top: 3rem; font-size: 0.85rem; color: var(--muted); text-align: center; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .toc a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← Dejan Vuković</a>
+    <h1>Reading &amp; watching</h1>
+
+    <div class="intro">
+      <p>Books and videos I recommend, mostly on fundamentals. Some of these I've read cover to cover, others I only skimmed chapter by chapter. Either way, the most important part is putting it into practice. Otherwise you've wasted your time.</p>
+      <p>My criteria for picking a book: how much it improves my judgement per hour of reading, and how long that value lasts before the field moves on.</p>
+    </div>
+
+    <!-- Keep this list in the same order as the sections below. -->
+    <ul class="toc">
+      <li><a href="#software-engineering">Software engineering</a></li>
+      <li><a href="#ai-ml">AI &amp; machine learning</a></li>
+    </ul>
+
+    <hr>
+
+    <!--
+      HOW TO ADD ENTRIES
+      Order: IT categories first, miscellaneous topics (nutrition & fitness,
+      philosophy, history, geopolitics, ...) at the bottom.
+
+      Book:
+        <li>
+          <h3>Title</h3>
+          <p class="meta"><span class="kind">Book</span> · Author</p>
+          <p>Short description.</p>
+        </li>
+
+      Video:
+        <li>
+          <h3><a href="https://...">Title</a></h3>
+          <p class="meta"><span class="kind">Video</span> · Speaker or channel</p>
+          <p>Short description.</p>
+        </li>
+
+      New category: copy a <section>, give it a new id, and add a matching
+      link to the .toc list above.
+    -->
+
+    <section id="software-engineering">
+      <h2>Software engineering</h2>
+      <ul class="items">
+        <li>
+          <h3><a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf">What Every Programmer Should Know About Memory</a></h3>
+          <p class="meta"><span class="kind">Book</span> · Ulrich Drepper, Red Hat · free PDF</p>
+          <p>From 2007, and still true, because the hardware fundamentals haven't changed: caches, cache lines, TLBs, NUMA, prefetching. After reading it, performance work stops being guesswork. You start to see that data layout and access patterns are what actually matter.</p>
+        </li>
+        <li>
+          <h3>Designing Data-Intensive Applications, 2nd Edition</h3>
+          <p class="meta"><span class="kind">Book</span> · Martin Kleppmann &amp; Chris Riccomini</p>
+          <p>If I could hand one book to every backend engineer, it would be this one. It covers replication, partitioning, transactions, consistency, and batch and stream processing, all explained through trade-offs instead of vendor marketing. It gives you the words to reason about any data system you'll run into.</p>
+        </li>
+        <li>
+          <h3>Kotlin in Action</h3>
+          <p class="meta"><span class="kind">Book</span> · Dmitry Jemerov &amp; Svetlana Isakova</p>
+          <p>Written by people from the Kotlin team, so it explains why the language works the way it does, not just the syntax. The fastest way I know to stop writing Java in Kotlin and start writing idiomatic Kotlin.</p>
+        </li>
+        <li>
+          <h3>Introduction to Algorithms</h3>
+          <p class="meta"><span class="kind">Book</span> · Thomas H. Cormen et al.</p>
+          <p>A reference, not a cover-to-cover read. I go back to it when I need to really understand a data structure or algorithm, instead of memorising patterns.</p>
+        </li>
+        <li>
+          <h3>Software Requirements</h3>
+          <p class="meta"><span class="kind">Book</span> · Karl Wiegers</p>
+          <p>Most projects that fail, fail on what to build, not on how to build it. This book teaches you how to dig out, write down and validate requirements before anyone writes a line of code.</p>
+        </li>
+        <li>
+          <h3>Domain-Driven Design</h3>
+          <p class="meta"><span class="kind">Book</span> · Eric Evans</p>
+          <p>Read it after the one above: once you know what to build, this is how to model it. Ubiquitous language and bounded contexts alone are worth it, even if you skim the denser chapters.</p>
+        </li>
+        <li>
+          <h3>The Unicorn Project</h3>
+          <p class="meta"><span class="kind">Book</span> · Gene Kim</p>
+          <p>A novel, so it's an easy read. It's about developer flow, feedback loops and what bureaucracy does to engineers. It helped me spot the same dysfunctions in real teams and gave me the words to talk about them.</p>
+        </li>
+        <li>
+          <h3>Release It!</h3>
+          <p class="meta"><span class="kind">Book</span> · Michael Nygard</p>
+          <p>About what happens to your code once it's in production. Circuit breakers, bulkheads, timeouts, and plenty of war stories. It makes you design for failure from day one.</p>
+        </li>
+        <li>
+          <h3><a href="https://sre.google/sre-book/table-of-contents/">Site Reliability Engineering</a></h3>
+          <p class="meta"><span class="kind">Book</span> · Google · free online</p>
+          <p>How Google runs production: SLOs, error budgets, toil, on-call and blameless postmortems. Not every practice scales down to a small team, but the way of thinking does.</p>
+        </li>
+        <li>
+          <h3>Software Architecture: The Hard Parts</h3>
+          <p class="meta"><span class="kind">Book</span> · Neal Ford, Mark Richards, Pramod Sadalage &amp; Zhamak Dehghani</p>
+          <p>There are no best practices in architecture, only trade-offs. Practical advice on breaking up systems, splitting data, and choosing between orchestration and choreography in distributed architectures.</p>
+        </li>
+        <li>
+          <h3>Building Secure &amp; Reliable Systems</h3>
+          <p class="meta"><span class="kind">Book</span> · Heather Adkins et al.</p>
+          <p>The companion to the SRE book. It treats security and reliability as one problem, because both are about how a system behaves under stress, and shows how to design for both from the start instead of bolting them on later.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ai-ml">
+      <h2>AI &amp; machine learning</h2>
+      <ul class="items">
+        <li>
+          <h3>AI Engineering</h3>
+          <p class="meta"><span class="kind">Book</span> · Chip Huyen</p>
+          <p>How to build products on top of foundation models: evaluation, prompt engineering, RAG, agents, fine-tuning and inference optimisation. The best map I've found of a field that changes every month.</p>
+        </li>
+        <li>
+          <h3>Build a Large Language Model (From Scratch)</h3>
+          <p class="meta"><span class="kind">Book</span> · Sebastian Raschka</p>
+          <p>You implement a GPT-style model step by step in PyTorch. Once you've written attention and a training loop yourself, LLMs stop being magic.</p>
+        </li>
+        <li>
+          <h3>Hands-On Large Language Models</h3>
+          <p class="meta"><span class="kind">Book</span> · Jay Alammar &amp; Maarten Grootendorst</p>
+          <p>Visual and practical. Clear illustrations of how tokens, embeddings and transformers work, followed by real uses like semantic search, classification and clustering.</p>
+        </li>
+        <li>
+          <h3>Designing Machine Learning Systems</h3>
+          <p class="meta"><span class="kind">Book</span> · Chip Huyen</p>
+          <p>Machine learning in production, beyond the model: data pipelines, features, deployment, monitoring and data drift. Most of the work is the system around the model, and this book is about that system.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Miscellaneous topics go below, e.g.:
+    <section id="nutrition-fitness"><h2>Nutrition &amp; fitness</h2><ul class="items"> ... </ul></section>
+    <section id="philosophy"><h2>Philosophy</h2><ul class="items"> ... </ul></section>
+    <section id="history"><h2>History</h2><ul class="items"> ... </ul></section>
+    <section id="geopolitics"><h2>Geopolitics</h2><ul class="items"> ... </ul></section>
+    -->
+
+    <footer><a href="index.html">← Back home</a></footer>
+  </div>
+</body>
+</html>
